@@ -1,0 +1,7 @@
+DROP SCHEMA IF EXISTS public;
+
+CREATE SCHEMA public;
+
+ALTER SCHEMA public OWNER TO postgres;
+
+
