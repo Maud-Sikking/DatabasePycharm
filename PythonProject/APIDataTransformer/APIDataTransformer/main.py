@@ -14,7 +14,7 @@ def main():
     apiCaller = APICaller()
     # Get all devices
     baseData: dict = apiCaller.getBaseData()
-    baseData = baseData[:100] # kun je gebruiken om maar een deel van de data te gebruiken. Bijv [:10] voor de eerste 10 devices
+    #  baseData = baseData[:500] kun je gebruiken om maar een deel van de data te gebruiken. Bijv [:10] voor de eerste 10 devices
     
     # split list into chunks of 10
     sub_list_length = 10
@@ -56,6 +56,10 @@ def processDevice(apiCaller: APICaller, device: dict) -> None:
     print("calls")
     print(calls)
     # TODO: maak hasuraCalls functies aan en roep die aan om de data in de database te krijgen
-
+    hasuraCalls.insertAlarmsData(apiCaller, deviceUUID, alarms)
+    hasuraCalls.insertAlertsData(apiCaller, deviceUUID, alerts)
+    hasuraCalls.insertMessagesData(apiCaller, deviceUUID, messages)
+    hasuraCalls.insertPhotosData(apiCaller, deviceUUID, photos)
+    hasuraCalls.insertCallsData(apiCaller, deviceUUID, calls)
         
 main()
